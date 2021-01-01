@@ -75,7 +75,7 @@ sleep(1000, function() {
    // executes after one second, and blocks the thread
 });
 */
-var output = new easymidi.Output('Akai APC20 2');
+var output = new easymidi.Output('Akai APC20 1');
 
 //output.send('sysex',[0xf0, 0x47, 0x00, 0x73, 0x60, 0x00, 0x04, 0x42, 0x08, 0x04, 0x01, 0xf7]); //APC40 mode2
 
