@@ -34,5 +34,5 @@ turn on webremote (password remote)
 
 run from cmd line
 
-nodejs dot2apc20.js
+node dot2apc20.js
 
