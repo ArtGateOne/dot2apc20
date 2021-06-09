@@ -1,0 +1,22 @@
+{
+  "name": "dot2apc20",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "dot2apc20.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "KK",
+  "license": "ISC",
+  "dependencies": {
+    "easymidi": "^1.0.3",
+    "websocket": "^1.0.31"
+  }
+}
