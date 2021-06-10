@@ -219,41 +219,37 @@ input.on('noteon', function (msg) {
             client.send('{"command":"SpecialMaster 2.1 At ' + grandmaster + '","session":' + sessionnr + ',"requestType":"command","maxRequests":0}');
             blackout = 0;
         }
+        output.send('noteon', { note: (pageIndex + 82), velocity: 1 + blackout, channel: 0 });
     }
 
     if (msg.note == 81) {
-        if (color == 5) {
-            color = 0;
-        }else if (color == 0) {
-            color = 5;
-        }
+        if (color == 5) { color = 0; }
+        else if (color == 0) { color = 5; }
     }
 
     if (msg.note >= 82 && msg.note <= 86) {//page select
         if (page_mode > 0) {
             output.send('noteon', { note: (pageIndex + 82), velocity: 0, channel: 0 });
             pageIndex = msg.note - 82;
-            output.send('noteon', { note: (msg.note), velocity: 1, channel: 0 });
+            output.send('noteon', { note: (msg.note), velocity: 1 + blackout, channel: 0 });
         }
-        if (page_mode == 2) {
-            pageIndex2 = pageIndex;
-        }
+        if (page_mode == 2) { pageIndex2 = pageIndex; }
     }
 
 });
 
 input.on('noteoff', function (msg) {
 
-    if ((msg.note) == 48) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + exec.index[wing][msg.channel] + ',"pageIndex":' + pageIndex2 + ',"buttonId":1,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 49) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + exec.index[wing][msg.channel] + ',"pageIndex":' + pageIndex2 + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 50) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[7][msg.channel] + ',"pageIndex":' + pageIndex2 + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 51) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[6][msg.channel] + ',"pageIndex":' + pageIndex2 + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 52) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[5][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 53) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[0][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 54) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[1][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 55) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[2][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 56) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[3][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
-    if ((msg.note) == 57) {client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[4][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}');}
+    if ((msg.note) == 48) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + exec.index[wing][msg.channel] + ',"pageIndex":' + pageIndex2 + ',"buttonId":1,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 49) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + exec.index[wing][msg.channel] + ',"pageIndex":' + pageIndex2 + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 50) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[7][msg.channel] + ',"pageIndex":' + pageIndex2 + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 51) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[6][msg.channel] + ',"pageIndex":' + pageIndex2 + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 52) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[5][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 53) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[0][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 54) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[1][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 55) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[2][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 56) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[3][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
+    if ((msg.note) == 57) { client.send('{"requestType":"playbacks_userInput","cmdline":"","execIndex":' + button.index[4][msg.channel] + ',"pageIndex":' + pageIndex + ',"buttonId":0,"pressed":false,"released":true,"type":0,"session":' + sessionnr + ',"maxRequests":0}'); }
 });
 
 
@@ -378,7 +374,8 @@ client.onmessage = function (e) {
 
                 var j = 7;
                 for (i = 0; i < 8; i++) {
-                    output.send('noteon', { note: 52, velocity: obj.itemGroups[5].items[i][0].isRun, channel: j });
+                    if (obj.itemGroups[5].items[i][0].isRun) { m = 1 + blackout; } else { m = 0; }
+                    output.send('noteon', { note: 52, velocity: m, channel: j });
                     j = j - 1;
                 }
             }
