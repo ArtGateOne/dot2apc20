@@ -130,9 +130,13 @@ input.on('cc', function (msg) {
         } else {
             faderValue = (((msg.value) - 2) * 0.8);
         }
-        grandmaster = faderValue;
-        if (blackout == 0) {
-            client.send('{"command":"SpecialMaster 2.1 At ' + (faderValue) + '","session":' + sessionnr + ',"requestType":"command","maxRequests":0}');
+        if (wing == 1) {
+            grandmaster = faderValue;
+            if (blackout == 0) {
+                client.send('{"command":"SpecialMaster 2.1 At ' + (faderValue) + '","session":' + sessionnr + ',"requestType":"command","maxRequests":0}');
+            }
+        } else if (wing == 2) {
+            client.send('{"command":"SpecialMaster 3.1 At ' + (faderValue * 2.25) + '","session":' + session + ',"requestType":"command","maxRequests":0}');
         }
     }
 
@@ -212,14 +216,18 @@ input.on('noteon', function (msg) {
     }
 
     if ((msg.note) == 80) {//blackout
-        if (blackout == 0) {
-            client.send('{"command":"SpecialMaster 2.1 At 0","session":' + sessionnr + ',"requestType":"command","maxRequests":0}');
-            blackout = true;
-        } else if (blackout == 1) {
-            client.send('{"command":"SpecialMaster 2.1 At ' + grandmaster + '","session":' + sessionnr + ',"requestType":"command","maxRequests":0}');
-            blackout = 0;
+        if (wing == 1) {
+            if (blackout == 0) {
+                client.send('{"command":"SpecialMaster 2.1 At 0","session":' + sessionnr + ',"requestType":"command","maxRequests":0}');
+                blackout = true;
+            } else if (blackout == 1) {
+                client.send('{"command":"SpecialMaster 2.1 At ' + grandmaster + '","session":' + sessionnr + ',"requestType":"command","maxRequests":0}');
+                blackout = 0;
+            }
+            output.send('noteon', { note: (pageIndex + 82), velocity: 1 + blackout, channel: 0 });
+        } else if (wing == 2) {
+            client.send('{"command":"Learn SpecialMaster 3.1","session":' + session + ',"requestType":"command","maxRequests":0}');
         }
-        output.send('noteon', { note: (pageIndex + 82), velocity: 1 + blackout, channel: 0 });
     }
 
     if (msg.note == 81) {
