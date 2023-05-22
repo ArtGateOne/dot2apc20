@@ -1,6 +1,6 @@
 {
   "name": "dot2apc20",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "none",
   "main": "dot2apc20.js",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "none"
+    "url": "https://github.com/ArtGateOne/dot2apc20"
   },
   "keywords": [
     "none"
   ],
-  "author": "KK",
+  "author": "ArtGateOne",
   "license": "ISC",
   "dependencies": {
-    "easymidi": "^1.0.3",
+    "easymidi": "^3.0.1",
     "websocket": "^1.0.31"
   }
 }

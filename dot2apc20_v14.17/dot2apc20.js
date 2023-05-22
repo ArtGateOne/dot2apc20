@@ -1,11 +1,11 @@
-//dot2apc20 v 1.4 by ArtGateOne
+//dot2apc20 v 1.5 by ArtGateOne
 
 
 
 //config 
 
-var midi_in = 'Akai APC20 0';     //set correct midi in device name
-var midi_out = 'Akai APC20 1';    //set correct midi out device name
+var midi_in = 'Akai APC20';     //set correct midi in device name
+var midi_out = 'Akai APC20';    //set correct midi out device name
 var wing = 1; //wing 1 or 2
 var page_mode = 1;   //set page select mode - 0-off, 1-only exec buttons(5), 2-exec buttons and faders together
 
