@@ -1,4 +1,4 @@
-//dot2apc20 v 1.5 by ArtGateOne
+//dot2apc20 v 1.5.2 by ArtGateOne
 
 
 
@@ -17,6 +17,7 @@ var sessionnr = 0;
 var pageIndex = 0;
 var pageIndex2 = 0;
 var request = 0;
+var interval_on = 0;
 var blackout = 0;
 var grandmaster = 100;
 
@@ -339,7 +340,10 @@ client.onmessage = function (e) {
 
 
         if (obj.responseType == "login" && obj.result === true) {
-            setInterval(interval, 100);//80
+            if (interval_on == 0) {
+                interval_on = 1;
+                setInterval(interval, 100);//80
+            }
             console.log("...LOGGED");
             console.log("SESSION " + session);
         }
