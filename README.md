@@ -15,19 +15,13 @@ run dot2 software
 
 turn on webremote (password remote)
 
-run from cmd line
+
+Run my code (select node.exe as default open tool dot2apc20.js file)
+
+or run from cmd line
 
 node dot2apc20.js
 
---------------------
-
-Edit file to config
-
-
-//CONFIG
-
-midi_in = 'Akai APC20 0';     //set correct midi in device name
-
-midi_out = 'Akai APC20 1';    //set correct midi out device name
+--------------------------------
 
 
